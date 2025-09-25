@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GST Info Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#5bec13",
+            "background-light": "#f6f8f6",
+            "background-dark": "#162210",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="flex flex-col min-h-screen justify-between">
+<div class="flex-grow">
+<header class="sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm z-10">
+<div class="flex items-center p-4">
+<a class="p-2 -ml-2" href="#">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</a>
+<h1 class="text-lg font-bold text-center flex-grow">GST Info</h1>
+<button class="p-2 -mr-2">
+<span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+</header>
+<main class="p-4 space-y-8">
+<section>
+<h2 class="text-xl font-bold mb-4">Favorites</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-slate-800/50">
+<div class="flex items-center justify-center size-12 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<div>
+<p class="font-medium">GST Rate: 18%</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Goods and Services Tax</p>
+</div>
+<button class="ml-auto text-yellow-500 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-slate-800/50">
+<div class="flex items-center justify-center size-12 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">article</span>
+</div>
+<div>
+<p class="font-medium">GST Rate Changes</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Updated 2 days ago</p>
+</div>
+<button class="ml-auto text-yellow-500 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold mb-4">GST Rates</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<div class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+<div class="p-2 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<span class="font-bold text-lg">0%</span>
+</div>
+<div class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+<div class="p-2 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<span class="font-bold text-lg">5%</span>
+</div>
+<div class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+<div class="p-2 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<span class="font-bold text-lg">12%</span>
+</div>
+<div class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+<div class="p-2 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<span class="font-bold text-lg">18%</span>
+</div>
+<div class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+<div class="p-2 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<span class="font-bold text-lg">28%</span>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold mb-4">Recent Updates</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-slate-800/50">
+<div class="flex items-center justify-center size-12 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">article</span>
+</div>
+<div>
+<p class="font-medium">GST Rate Changes</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Updated 2 days ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-slate-800/50">
+<div class="flex items-center justify-center size-12 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">article</span>
+</div>
+<div>
+<p class="font-medium">New GST Rules</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Updated 1 week ago</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold mb-4">GST News</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-slate-800/50">
+<div class="flex items-center justify-center size-12 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">newspaper</span>
+</div>
+<div>
+<p class="font-medium">GST Collection Trends</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Published 3 days ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-slate-800/50">
+<div class="flex items-center justify-center size-12 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">newspaper</span>
+</div>
+<div>
+<p class="font-medium">Upcoming GST Reforms</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Published 1 week ago</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="sticky bottom-0 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<nav class="flex justify-around items-center h-16">
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="text-xs font-medium">GST Info</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">calculate</span>
+<span class="text-xs font-medium">Calculator</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</nav>
+</footer>
+</div>
+
+</body></html>

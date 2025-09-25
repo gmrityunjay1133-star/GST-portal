@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GST Info - Home</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4ce64c",
+            "sea-blue": "#006994",
+            "background-light": "#f0fff4",
+            "background-dark": "#112111",
+            "content-light": "#ffffff",
+            "content-dark": "#e8f3e8",
+            "subtle-light": "#c0e0e0",
+            "subtle-dark": "#a0c2a0",
+            "border-light": "#dce5dc",
+            "border-dark": "#3a4d3a",
+            "surface-light": "#ffffff",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "lg": "1rem",
+            "xl": "1.5rem",
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      background-color: #006994; /* Sea Blue */
+      color: white; /* Contrasting text */
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+      color: white; /* Contrast icons */
+    }
+  </style>
+</head>
+
+<body class="font-display">
+<div class="flex flex-col min-h-screen">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 bg-sea-blue/90 backdrop-blur-sm z-20 shadow-md p-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.gA7b6F2ghnKz9m61EeVthwHaHc?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Satyamev Jayate" class="h-12 w-12">
+        <div class="leading-tight">
+          <span class="block text-xl font-bold">Goods and Services Tax</span>
+          <span class="block text-sm text-gray-200">Government of India, State and Union Territories</span>
+        </div>
+      </div>
+      <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-white/20 hover:bg-white/30 transition">
+        <span class="material-symbols-outlined text-white">info</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow px-4 py-6 space-y-8">
+
+    <!-- Hero Section -->
+    <section class="text-center space-y-3">
+      <h2 class="text-3xl font-bold">Welcome to the GST Portal</h2>
+      <p class="text-gray-200 max-w-2xl mx-auto">
+        Learn about the Goods and Services Tax (GST) in India — its basics, benefits, and history — in a simplified way.
+      </p>
+      <div class="flex justify-center">
+        <div class="bg-gradient-to-r from-green-400 to-primary text-white font-bold px-6 py-3 rounded-xl shadow-lg">
+          <a href="https://www.pib.gov.in/FactsheetDetails.aspx?Id=148644">One Nation • One Tax</a>
+        </div>
+      </div>
+    </section>
+    
+
+
+
+    
+    <!-- About GST -->
+    <section class="bg-white/10 rounded-xl p-6 shadow-lg space-y-4">
+      <h3 class="text-xl font-bold flex items-center gap-2">
+        <span class="material-symbols-outlined text-white">account_balance</span>
+        What is GST?
+      </h3>
+      <p class="leading-relaxed text-sm sm:text-base">
+        Goods and Services Tax (GST) is a unified indirect tax introduced in India on 1st July 2017. 
+        It replaced multiple cascading taxes levied by the central and state governments. 
+        GST is levied on the supply of goods and services and is designed to create a single national market.
+      </p>
+      <h4 class="font-semibold mt-2">Key Benefits:</h4>
+      <ul class="list-disc pl-5 space-y-1 text-gray-200">
+        <li>Reduction in overall tax burden on goods, estimated at 25%-30%.</li>
+        <li>Creation of a unified national market.</li>
+        <li>Boost to the 'Make in India' initiative by making domestic goods and services more competitive.</li>
+        <li>Prevention of cascading taxes through input tax credit.</li>
+        <li>Harmonization of laws, procedures, and tax rates across India.</li>
+      </ul>
+    </section>
+
+    <!-- History of GST -->
+    <section class="space-y-6">
+      <h3 class="text-xl font-bold flex items-center gap-2">
+        <span class="material-symbols-outlined text-white">history</span>
+        History of GST in India
+      </h3>
+      <div class="relative border-l-2 border-white pl-6 space-y-6">
+
+        <!-- 2000 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2000</h4>
+          <p class="text-gray-200 text-sm">
+            The Vajpayee government first proposed the concept of GST in 2000. A committee led by the then Finance Minister Yashwant Sinha was formed to draft the framework. The idea was to replace the complex web of indirect taxes like excise duty, VAT, and service tax with a single, unified system. This was considered a major reform to modernize India’s taxation system and align it with global best practices. Although the process faced several challenges, this initiative marked the beginning of India’s journey towards GST.
+          </p>
+        </div>
+
+        <!-- 2006 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2006</h4>
+          <p class="text-gray-200 text-sm">
+            In the 2006 Budget Speech, Finance Minister P. Chidambaram announced that GST would be introduced by April 1, 2010. The Empowered Committee of State Finance Ministers was tasked with preparing a roadmap. However, consensus between the Centre and the States proved challenging. Disputes over revenue-sharing, compensation, and state autonomy delayed implementation. Despite these challenges, the 2006 announcement ensured that GST remained a central agenda item in India’s tax reforms, paving the way for further discussions and negotiations in the years to come.
+          </p>
+        </div>
+
+        <!-- 2011 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2011</h4>
+          <p class="text-gray-200 text-sm">
+            The UPA government introduced the 115th Constitutional Amendment Bill in 2011 to enable the introduction of GST. The Bill sought to give both Parliament and state legislatures the power to levy GST. However, political opposition and lack of consensus between the Centre and States stalled progress. While the Bill lapsed, it reignited debates on tax reforms, highlighting the urgency of replacing multiple indirect taxes with a more efficient system. This phase was crucial in maintaining momentum towards the eventual passage of GST legislation.
+          </p>
+        </div>
+
+        <!-- 2014 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2014</h4>
+          <p class="text-gray-200 text-sm">
+            The NDA government led by Prime Minister Narendra Modi reintroduced GST with renewed political will. Finance Minister Arun Jaitley tabled the 122nd Constitutional Amendment Bill in December 2014. The government actively worked with states to resolve key issues, including revenue compensation and tax-sharing mechanisms. This period saw intense negotiations with state governments and opposition parties, which eventually helped build the consensus required to pass the Bill. This renewed momentum was critical in finally moving GST towards successful implementation.
+          </p>
+        </div>
+
+        <!-- 2017 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2017</h4>
+          <p class="text-gray-200 text-sm">
+            GST was officially launched on 1st July 2017 by the Government of India in a midnight session of Parliament. The historic event marked the unification of India into a single indirect tax regime. Four tax slabs were introduced — 5%, 12%, 18%, and 28%. Petroleum products, alcohol, and a few items were kept outside GST. The GST Council, comprising the Union Finance Minister and State Finance Ministers, was empowered to make decisions on rates and reforms. This milestone fundamentally transformed India’s taxation system.
+          </p>
+        </div>
+
+        <!-- 2018 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2018</h4>
+          <p class="text-gray-200 text-sm">
+            By 2018, the GST Council reduced the number of goods under the highest 28% tax slab, shifting many items to lower categories. Simplification measures such as the introduction of e-way bills for transport of goods were implemented to curb tax evasion. The Council also began discussions on rationalizing rates and improving compliance procedures. Small and medium businesses were given relief through simplified return filing and threshold exemptions. This phase focused on resolving practical challenges faced by businesses during the initial rollout of GST.
+          </p>
+        </div>
+
+        <!-- 2020 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2020</h4>
+          <p class="text-gray-200 text-sm">
+            The COVID-19 pandemic severely impacted GST collections. The government provided relief measures such as extended deadlines for GST return filing, late fee waivers, and reduced interest rates for delayed payments. The GST Council also discussed compensation to states for revenue shortfall, leading to borrowing mechanisms. The focus was on supporting businesses during the economic slowdown while ensuring states had sufficient funds. This phase highlighted the critical role of GST as a revenue lifeline for both the Centre and States.
+          </p>
+        </div>
+
+        <!-- 2023 -->
+        <div>
+          <span class="absolute -left-3 top-1 w-6 h-6 bg-white rounded-full"></span>
+          <h4 class="font-bold">2023</h4>
+          <p class="text-gray-200 text-sm">
+            By 2023, GST collections consistently crossed ₹1.5 lakh crore monthly, indicating improved compliance and economic recovery. The GST Council introduced measures for digitization, including e-invoicing for large taxpayers, automated returns, and AI-driven compliance checks. The government emphasized simplification of filing processes and greater transparency. Discussions on rationalizing tax slabs and expanding the GST net continued, reflecting ongoing reforms to strengthen GST as a cornerstone of India’s indirect tax system.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GST Return Filing Section -->
+    <section class="bg-white/10 rounded-xl p-6 shadow-lg space-y-4">
+      <h3 class="text-xl font-bold flex items-center gap-2">
+        <span class="material-symbols-outlined text-white">description</span>
+        GST Return Filing
+      </h3>
+      <p class="text-gray-200 text-sm">
+        File your GST returns quickly and easily using the official GST portal. Choose the return type below:
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="https://www.gst.gov.in/" target="_blank" class="bg-green-500/80 hover:bg-green-600 text-white p-4 rounded-lg font-semibold text-center shadow-md">
+          GSTR-1 (Outward Supplies)
+        </a>
+        <a href="https://www.gst.gov.in/" target="_blank" class="bg-green-500/80 hover:bg-green-600 text-white p-4 rounded-lg font-semibold text-center shadow-md">
+          GSTR-3B (Summary Return)
+        </a>
+        <a href="https://www.gst.gov.in/" target="_blank" class="bg-green-500/80 hover:bg-green-600 text-white p-4 rounded-lg font-semibold text-center shadow-md">
+          GSTR-9 (Annual Return)
+        </a>
+        <a href="https://www.gst.gov.in/" target="_blank" class="bg-green-500/80 hover:bg-green-600 text-white p-4 rounded-lg font-semibold text-center shadow-md">
+          GSTR-4 (Composition Scheme)
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="sticky bottom-0 bg-sea-blue/90 backdrop-blur-sm border-t border-white/30">
+    <nav class="flex justify-around py-2">
+
+      <!-- Home -->
+      <a href="index.html" class="flex flex-col items-center justify-center gap-1 w-20 text-white">
+        <div class="bg-white/20 rounded-full p-2">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <span class="text-xs font-bold">Home</span>
+      </a>
+
+      <!-- GST Info -->
+      <a href="GSTinfo.html" class="flex flex-col items-center justify-center gap-1 w-20 text-gray-200">
+        <span class="material-symbols-outlined">info</span>
+        <span class="text-xs font-medium">GST Info</span>
+      </a>
+
+      <!-- Calculator -->
+      <a href="calculator.html" class="flex flex-col items-center justify-center gap-1 w-20 text-gray-200">
+        <span class="material-symbols-outlined">calculate</span>
+        <span class="text-xs font-medium">Calculator</span>
+      </a>
+
+      <!-- Profile -->
+      <a href="Profile.html" class="flex flex-col items-center justify-center gap-1 w-20 text-gray-200">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-xs font-medium">Profile</span>
+      </a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>

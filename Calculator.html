@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GST Calculator</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+<!-- jsPDF for PDF Generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#4ce64c",
+          secondary: "#22d3ee",
+          background: "#112111",
+          surface: "#1a2a1a",
+          subtle: "#94a3b8",
+        },
+        fontFamily: {
+          display: ["Inter", "sans-serif"]
+        },
+        boxShadow: {
+          glow: "0 0 15px rgba(76, 230, 76, 0.6)",
+          card: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+        animation: {
+          'fade-in': 'fadeIn 0.5s ease-in-out',
+          'slide-up': 'slideUp 0.3s ease-out',
+        },
+        keyframes: {
+          fadeIn: {
+            '0%': { opacity: '0' },
+            '100%': { opacity: '1' },
+          },
+          slideUp: {
+            '0%': { transform: 'translateY(20px)', opacity: '0' },
+            '100%': { transform: 'translateY(0)', opacity: '1' },
+          },
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  body {
+    min-height: 100dvh;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top left, #273072, #155315);
+    background-blend-mode: overlay;
+    opacity: 0.95;
+  }
+  .icon-glow:hover {
+    color: #4ce64c !important;
+    text-shadow: 0 0 10px rgba(76, 230, 76, 0.8);
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+  }
+  .input-focus {
+    transition: all 0.3s ease;
+  }
+  .input-focus:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 230, 76, 0.2);
+  }
+  .btn-glow {
+    box-shadow: 0 4px 15px rgba(76, 230, 76, 0.3);
+    transition: all 0.3s ease;
+  }
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 230, 76, 0.4);
+  }
+  .results-card {
+    animation: slide-up 0.5s ease-out;
+  }
+  .invoice-btn {
+    background: linear-gradient(135deg, #4ce64c, #22d3ee);
+    transition: all 0.3s ease;
+  }
+  .invoice-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(76, 230, 76, 0.5);
+  }
+</style>
+</head>
+
+<body class="font-display text-gray-100">
+<div class="flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="sticky top-0 bg-background/90 backdrop-blur-md z-20 shadow-lg border-b border-gray-700">
+    <div class="flex items-center justify-between p-4">
+      <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface/50 transition-colors">
+        <span class="material-symbols-outlined icon-glow text-xl">arrow_back</span>
+      </button>
+      <h1 class="text-xl font-bold text-center flex-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">GST Calculator</h1>
+      <div class="w-10"></div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow px-4 py-6 space-y-6 relative z-10">
+
+    <!-- Item Input -->
+    <div class="relative animate-fade-in">
+      <input list="items" id="item" name="item"
+        placeholder="Enter the item you want to check (e.g., Fresh fruits)"
+        class="w-full h-14 pl-4 pr-4 bg-surface/80 border border-gray-600 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-primary/50 input-focus shadow-md"/>
+      <datalist id="items">
+        <option value="Fresh fruits">
+        <option value="Vegetables">
+        <option value="Milk (fresh)">
+        <option value="Milk (Pasterized)">
+        <option value="Curd">
+        <option value="Lassi">
+        <option value="Unbranded Paneer">
+        <option value="Paneer(Branded)">
+        <option value="Eggs">
+        <option value="Natural Honey">
+        <option value="Bread">
+        <option value="Salt">
+        <option value="Newspaper">
+        <option value="Books">
+        <option value="Handloom products">
+        <option value="Sugar">
+        <option value="Tea">
+        <option value="Coffee">
+        <option value="Edible Oils">
+        <option value="Spices">
+        <option value="Packaged food grains">
+        <option value="Milk Powder">
+        <option value="Baby Food">
+        <option value="Footwear">
+        <option value="Apparel">
+        <option value="Toothpaste">
+        <option value="Soap">
+        <option value="Steel Products">
+        <option value="Cement">
+        <option value="Two Wheelers">
+        <option value="Four Wheelers">
+        <option value="Luxury Cars">
+        <option value="High-end motorcycles(>350cc)">
+        <option value="Aerated Drinks">
+        <option value="Tobacco">
+        <option value="Pan Masala">
+        <option value="Yachts">
+        <option value="Private jets">
+      </datalist>
+    </div>
+
+    <!-- GST Rate -->
+    <div class="bg-surface/50 rounded-xl p-4 shadow-md">
+      <h2 class="text-base font-bold mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">percent</span>
+        GST Rate
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <label class="p-4 rounded-xl border-2 border-gray-600 bg-surface/50 hover:border-primary/50 cursor-pointer text-center transition-all duration-200 hover:shadow-glow">
+          <input class="sr-only" name="gst-rate" type="radio" value="0"/>
+      
+          <span class="font-bold text-sm">0%</span>
+        </label>
+        <label class="p-4 rounded-xl border-2 border-gray-600 bg-surface/50 hover:border-primary/50 cursor-pointer text-center transition-all duration-200 hover:shadow-glow">
+          <input class="sr-only" name="gst-rate" type="radio" value="5"/>
+          
+          <span class="font-bold text-sm">5%</span>
+        </label>
+        <label class="p-4 rounded-xl border-2 border-primary bg-primary/20 cursor-pointer text-center transition-all duration-200 shadow-glow">
+          <input checked class="sr-only" name="gst-rate" type="radio" value="18"/>
+          
+          <span class="font-bold text-sm text-primary">18%</span>
+        </label>
+        <label class="p-4 rounded-xl border-2 border-gray-600 bg-surface/50 hover:border-primary/50 cursor-pointer text-center transition-all duration-200 hover:shadow-glow">
+          <input class="sr-only" name="gst-rate" type="radio" value="40"/>
+          
+          <span class="font-bold text-sm">40%</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Original Value -->
+    <div>
+      <input id="original-value" type="number" min="0" step="0.01"
+        placeholder="Enter Original Value (₹)"
+        class="w-full h-14 px-4 bg-surface/80 border border-gray-600 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-primary/50 input-focus shadow-md"/>
+    </div>
+
+    <!-- Calculation Options -->
+    <div class="bg-surface/50 rounded-xl p-4 shadow-md">
+      <h2 class="text-base font-bold mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">calculate</span>
+        Calculation Options
+      </h2>
+      <div class="space-y-3">
+        <label class="flex items-center justify-between p-4 rounded-xl border-2 border-gray-600 bg-surface/30 hover:border-primary/50 cursor-pointer transition-all duration-200">
+          <span class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-subtle">add</span>
+            Include GST
+          </span>
+          <input checked class="form-radio h-5 w-5 text-primary bg-transparent" name="calculation-option" type="radio" value="include"/>
+        </label>
+        <label class="flex items-center justify-between p-4 rounded-xl border-2 border-gray-600 bg-surface/30 hover:border-primary/50 cursor-pointer transition-all duration-200">
+          <span class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-subtle">remove</span>
+            Exclude GST
+          </span>
+          <input class="form-radio h-5 w-5 text-primary bg-transparent" name="calculation-option" type="radio" value="exclude"/>
+        </label>
+      </div>
+    </div>
+
+    <!-- Calculate Button -->
+    <button id="calculate-btn" class="w-full h-14 flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-secondary text-black font-bold tracking-wide text-lg btn-glow shadow-lg">
+      <span class="material-symbols-outlined mr-2">calculate</span>
+      Calculate GST
+    </button>
+
+    <!-- Results -->
+    <div id="results" class="hidden bg-gradient-to-br from-surface/80 to-background/80 rounded-2xl p-6 space-y-4 shadow-2xl border border-gray-600/50 results-card backdrop-blur-sm">
+      <h2 class="text-xl font-bold text-center flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-primary">check_circle</span>
+        Calculation Results
+      </h2>
+      <div class="space-y-4 pt-2">
+        <div class="flex justify-between items-center p-3 bg-surface/50 rounded-lg">
+          <span class="text-subtle flex items-center gap-2">
+            <span class="material-symbols-outlined">description</span>
+            Item:
+          </span>
+          <span id="result-item" class="font-medium text-base"></span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-surface/50 rounded-lg">
+          <span class="text-subtle flex items-center gap-2">
+            <span class="material-symbols-outlined">attach_money</span>
+            Original Value:
+          </span>
+          <span id="result-original" class="font-medium text-base"></span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-surface/50 rounded-lg">
+          <span class="text-subtle flex items-center gap-2">
+            <span class="material-symbols-outlined">percent</span>
+            GST Rate:
+          </span>
+          <span id="result-gst-rate" class="font-medium text-base"></span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-surface/50 rounded-lg">
+          <span class="text-subtle flex items-center gap-2">
+            <span class="material-symbols-outlined">account_balance</span>
+            CGST:
+          </span>
+          <span id="result-cgst" class="font-medium text-base"></span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-surface/50 rounded-lg">
+          <span class="text-subtle flex items-center gap-2">
+            <span class="material-symbols-outlined">account_balance</span>
+            SGST:
+          </span>
+          <span id="result-sgst" class="font-medium text-base"></span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-surface/50 rounded-lg">
+          <span class="text-subtle flex items-center gap-2">
+            <span class="material-symbols-outlined">account_balance</span>
+            IGST:
+          </span>
+          <span id="result-igst" class="font-medium text-base"></span>
+        </div>
+        <div class="border-t border-gray-600 pt-4">
+          <div class="flex justify-between text-sm">
+            <span class="text-subtle flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+              GST Amount:
+            </span>
+            <span id="result-gst-amount" class="font-medium text-lg text-primary">₹ 0.00</span>
+          </div>
+          <div class="flex justify-between text-sm mt-2">
+            <span class="text-subtle flex items-center gap-2">
+              <span class="material-symbols-outlined">payments</span>
+              Total Amount:
+            </span>
+            <span id="result-total" class="font-bold text-2xl text-primary">₹ 0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GST Invoice Section -->
+      <div class="pt-4 border-t border-gray-600">
+        <h3 class="text-lg font-bold mb-3 text-center flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-secondary">receipt_long</span>
+          GST Invoice
+        </h3>
+        <button id="generate-invoice" class="w-full h-12 flex items-center justify-center rounded-xl invoice-btn text-black font-bold tracking-wide text-sm shadow-lg">
+          <span class="material-symbols-outlined mr-2">picture_as_pdf</span>
+          Generate PDF Invoice
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="sticky bottom-0 bg-background/95 backdrop-blur-md border-t border-gray-700 shadow-inner">
+    <nav class="flex justify-around py-3">
+      <a href="Home.html" class="flex flex-col items-center gap-1 w-20 text-subtle hover:text-primary transition-all duration-200 icon-glow">
+        <span class="material-symbols-outlined text-lg">home</span>
+        <span class="text-xs font-medium">Home</span>
+      </a>
+      <a href="GSTinfo.html" class="flex flex-col items-center gap-1 w-20 text-subtle hover:text-primary transition-all duration-200 icon-glow">
+        <span class="material-symbols-outlined text-lg">info</span>
+        <span class="text-xs font-medium">GST Info</span>
+      </a>
+      <a href="Calculator.html" class="flex flex-col items-center gap-1 w-20 text-primary">
+        <div class="bg-gradient-to-r from-primary to-secondary rounded-full p-2 shadow-glow">
+          <span class="material-symbols-outlined text-black">calculate</span>
+        </div>
+        <span class="text-xs font-bold">Calculator</span>
+      </a>
+      <a href="Profile.html" class="flex flex-col items-center gap-1 w-20 text-subtle hover:text-primary transition-all duration-200 icon-glow">
+        <span class="material-symbols-outlined text-lg">person</span>
+        <span class="text-xs font-medium">Profile</span>
+      </a>
+    </nav>
+  </footer>
+
+</div>
+
+<script>
+  // GST Calculation Logic
+  document.getElementById('calculate-btn').addEventListener('click', function() {
+    const item = document.getElementById('item').value || 'Unknown Item';
+    const originalValueStr = document.getElementById('original-value').value;
+    const gstRate = parseFloat(document.querySelector('input[name="gst-rate"]:checked').value);
+    const calculationOption = document.querySelector('input[name="calculation-option"]:checked').value;
+
+    if (!originalValueStr || originalValueStr <= 0) {
+      alert('Please enter a valid original value.');
+      return;
+    }
+
+    let baseValue = parseFloat(originalValueStr);
+    let gstAmount, totalAmount;
+
+    if (calculationOption === 'include') {
+      totalAmount = baseValue;
+      gstAmount = (baseValue * gstRate) / (100 + gstRate);
+      baseValue = totalAmount - gstAmount;
+    } else {
+      gstAmount = (baseValue * gstRate) / 100;
+      totalAmount = baseValue + gstAmount;
+    }
+
+    // Auto split GST
+    let cgst = gstAmount / 2;
+    let sgst = gstAmount / 2;
+    let igst = gstAmount; // For inter-state supply
+
+    // Update results
+    document.getElementById('result-item').textContent = item;
+    document.getElementById('result-original').textContent = '₹ ' + baseValue.toFixed(2);
+    document.getElementById('result-gst-rate').textContent = gstRate + '%';
+    document.getElementById('result-cgst').textContent = '₹ ' + cgst.toFixed(2);
+    document.getElementById('result-sgst').textContent = '₹ ' + sgst.toFixed(2);
+    document.getElementById('result-igst').textContent = '₹ ' + igst.toFixed(2);
+    document.getElementById('result-gst-amount').textContent = '₹ ' + gstAmount.toFixed(2);
+    document.getElementById('result-total').textContent = '₹ ' + totalAmount.toFixed(2);
+
+    document.getElementById('results').classList.remove('hidden');
+  });
+
+  // Generate PDF Invoice with Watermark
+  document.getElementById('generate-invoice').addEventListener('click', function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Watermark
+    doc.setFontSize(85);
+    doc.setTextColor(150, 150, 150);
+    doc.text("GST INVOICE", 50, 200, { angle: 45 });
+
+    doc.setFontSize(30);
+    doc.setTextColor(0, 0, 0);
+    doc.text("GST Invoice", 20, 20);
+
+    const item = document.getElementById('result-item').textContent;
+    const original = document.getElementById('result-original').textContent;
+    const gstRate = document.getElementById('result-gst-rate').textContent;
+    const cgst = document.getElementById('result-cgst').textContent;
+    const sgst = document.getElementById('result-sgst').textContent;
+    const igst = document.getElementById('result-igst').textContent;
+    const gstAmount = document.getElementById('result-gst-amount').textContent;
+    const total = document.getElementById('result-total').textContent;
+
+    let y = 40;
+    doc.setFontSize(15);
+    doc.text("Item: " + item, 20, y);
+    y += 10;
+    doc.text("Original Value: " + original, 20, y);
+    y += 10;
+    doc.text("GST Rate: " + gstRate, 20, y);
+    y += 10;
+    doc.text("CGST: " + cgst, 20, y);
+    y += 10;
+    doc.text("SGST: " + sgst, 20, y);
+    y += 10;
+    doc.text("IGST: " + igst, 20, y);
+    y += 10;
+    doc.text("GST Amount: " + gstAmount, 20, y);
+    y += 10;
+    doc.text("Total Amount: " + total, 20, y);
+
+    doc.save("GST_Invoice.pdf");
+  });
+</script>
+</body>
+</html>

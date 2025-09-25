@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>GST Portal Profile</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#10b981",
+            secondary: "#34d399",
+            background: "#f0fdf4",
+            surface: "#d1fae5",
+            subtle: "#6ee7b7",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          },
+          boxShadow: {
+            glow: "0 0 15px rgba(16, 185, 129, 0.6)",
+          }
+        },
+      },
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100dvh;
+      background: radial-gradient(circle at top left, #d1fae5, #a7f3d0);
+    }
+    .icon-glow:hover {
+      color: #10b981;
+      text-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+      transform: scale(1.1);
+      transition: all 0.2s ease-in-out;
+    }
+    .profile-image {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+    .edit-overlay {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: rgba(16, 185, 129, 0.8);
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .profile-image:hover .edit-overlay {
+      opacity: 1;
+    }
+    .profile-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+<div class="flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="sticky top-0 bg-background/80 backdrop-blur-sm z-10 shadow-md">
+    <div class="flex items-center justify-between p-4">
+      <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface">
+        <span class="material-symbols-outlined icon-glow">arrow_back</span>
+      </button>
+      <h1 class="text-xl font-bold text-center flex-1">Profile</h1>
+      <div class="w-10"></div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow px-4 py-6">
+    <div class="flex flex-col items-center space-y-6">
+
+      <!-- Profile Card -->
+      <div class="flex flex-col items-center space-y-2">
+        <div class="profile-image w-28 h-28 rounded-full bg-surface flex items-center justify-center shadow-glow relative overflow-hidden">
+          <!-- Hidden file input -->
+          <input type="file" id="profile-upload" accept="image/*" class="hidden" />
+          
+          <!-- Default icon or preview image -->
+          <img id="profile-preview" src="" alt="Profile Image" class="profile-preview hidden" />
+          <span id="default-icon" class="material-symbols-outlined text-6xl text-primary">person</span>
+          
+          <!-- Edit overlay -->
+          <div class="edit-overlay">
+            <span class="material-symbols-outlined">edit</span>
+          </div>
+        </div>
+        <h2 class="text-2xl font-bold">Mrityunjay Gupta</h2>
+        <p class="text-subtle">gmrityunjay1133@gmail.com</p>
+      </div>
+
+      <!-- GST Details -->
+      <div class="w-full p-6 bg-surface rounded-2xl space-y-4 shadow-lg">
+        <h3 class="text-lg font-semibold mb-2">GST Details</h3>
+        <div class="flex items-center justify-between">
+          <span class="text-gray-600">GSTIN</span>
+          <span class="font-medium">22AAAAA0000A1Z5</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-gray-600">Status</span>
+          <span class="font-medium text-primary">Active</span>
+        </div>
+      </div>
+
+      <!-- Settings List -->
+      <div class="w-full bg-surface rounded-2xl shadow-md">
+        <ul class="divide-y divide-gray-200">
+          <li>
+            <a class="flex items-center justify-between p-4 hover:bg-primary/10 transition-colors" href="#">
+              <div class="flex items-center space-x-4">
+                <span class="material-symbols-outlined icon-glow">history</span>
+                <span class="font-medium">Action History</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center justify-between p-4 hover:bg-primary/10 transition-colors" href="#">
+              <div class="flex items-center space-x-4">
+                <span class="material-symbols-outlined icon-glow">security</span>
+                <span class="font-medium">Security Settings</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center justify-between p-4 hover:bg-primary/10 transition-colors" href="#">
+              <div class="flex items-center space-x-4">
+                <span class="material-symbols-outlined icon-glow">notifications</span>
+                <span class="font-medium">Notifications</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center justify-between p-4 hover:bg-primary/10 transition-colors" href="Contact.html">
+              <div class="flex items-center space-x-4">
+                <span class="material-symbols-outlined icon-glow">contact_phone</span>
+                <span class="font-medium">Contact Us</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Logout -->
+      <div class="w-full">
+        <button class="w-full h-12 flex items-center justify-center rounded-lg bg-surface hover:bg-red-500/20 transition-colors">
+          <span class="material-symbols-outlined text-red-500 mr-2">logout</span>
+          <a href="Login.html"><span class="font-bold text-red-500">Logout</span></a>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="sticky bottom-0 bg-background/90 backdrop-blur-sm border-t border-gray-300 shadow-inner">
+    <nav class="flex justify-around py-2">
+      <a href="Home.html" class="flex flex-col items-center justify-center gap-1 w-20 text-gray-600 hover:text-primary transition">
+        <span class="material-symbols-outlined icon-glow">home</span>
+        <span class="text-xs font-medium">Home</span>
+      </a>
+      <a href="GSTinfo.html" class="flex flex-col items-center justify-center gap-1 w-20 text-gray-600 hover:text-primary transition">
+        <span class="material-symbols-outlined icon-glow">info</span>
+        <span class="text-xs font-medium">GST Info</span>
+      </a>
+      <a href="Calculator.html" class="flex flex-col items-center justify-center gap-1 w-20 text-gray-600 hover:text-primary transition">
+        <span class="material-symbols-outlined icon-glow">calculate</span>
+        <span class="text-xs font-medium">Calculator</span>
+      </a>
+      <a href="Profile.html" class="flex flex-col items-center justify-center gap-1 w-20 text-primary">
+        <div class="bg-primary/20 rounded-full p-2 shadow-glow">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+        <span class="text-xs font-bold">Profile</span>
+      </a>
+    </nav>
+  </footer>
+
+</div>
+
+<script>
+  // Profile Image Upload Functionality
+  const profileImage = document.querySelector('.profile-image');
+  const fileInput = document.getElementById('profile-upload');
+  const profilePreview = document.getElementById('profile-preview');
+  const defaultIcon = document.getElementById('default-icon');
+
+  // Click handler to trigger file input
+  profileImage.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  // Handle file selection and preview
+  fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        profilePreview.src = e.target.result;
+        profilePreview.classList.remove('hidden');
+        defaultIcon.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Optional: Reset to default if needed (e.g., add a remove button later)
+</script>
+</body>
+</html>
